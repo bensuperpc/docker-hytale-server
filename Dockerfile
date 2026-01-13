@@ -28,6 +28,25 @@ RUN mkdir -p /app
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh && chown hytale:hytale /app/entrypoint.sh
 
+# Label the image
+LABEL maintainer="theo546"
+LABEL author="theo546"
+LABEL description="Hytale's docker image"
+
+ARG BUILD_DATE=""
+ARG VCS_REF=""
+ARG VCS_URL=""
+
+LABEL org.label-schema.schema-version="1.0" \
+      org.label-schema.build-date="${BUILD_DATE}" \
+      org.label-schema.name="docker-hytale-server" \
+      org.label-schema.description="Hytale's docker image" \
+      org.label-schema.vendor="theo546" \
+      org.label-schema.url="https://github.com/theo546/docker-hytale-server" \
+      org.label-schema.vcs-url="${VCS_URL}" \
+      org.label-schema.vcs-ref="${VCS_REF}" \
+      org.label-schema.docker.cmd=""
+
 # Set working directory to /server
 WORKDIR /server
 
